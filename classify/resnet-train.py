@@ -204,10 +204,8 @@ for epoch in range(200):  # 训练 10 个 epoch
             print(f"Class {i} Accuracy: {acc_i:.2f}% ({int(class_correct[i])}/{int(class_total[i])})")
         else:
             print(f"Class {i} has no samples in validation set.")
-    # 保存最好模型
-    if acc > best_acc:
-        best_acc = acc
-        torch.save(net.state_dict(), save_path)
-        print(f"✅ Saved best model with acc: {acc:.2f}%")
+    best_acc = acc
+    torch.save(net.state_dict(), save_path)
+    print(f"✅ Saved best model with acc: {acc:.2f}%")
     net.train(is_training)
 print(f'训练完成！best:{best_acc}')
