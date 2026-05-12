@@ -344,9 +344,8 @@ for epoch in range(300):
             acc_i = 100 * class_correct[i] / class_total[i]
             logging.info(f"Class {i} Accuracy: {acc_i:.2f}% ({int(class_correct[i])}/{int(class_total[i])})")
 
-    if acc > best_acc:
-        best_acc = acc
-        torch.save(net.state_dict(), save_path)
-        logging.info(f"✅ Saved best model with acc: {acc:.2f}%")
+    best_acc = acc
+    torch.save(net.state_dict(), save_path)
+    logging.info(f"✅ Saved best model with acc: {acc:.2f}%")
 logging.info(f"✅ Best accuracy: {best_acc:.2f}%")
 logging.info("训练完成！")
